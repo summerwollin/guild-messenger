@@ -22,11 +22,21 @@ public class MessageController {
         return "Hello Guild!";
     }
 
+    // TODO: Pagination would be a great way to improve this API. It would allow users more flexibility to set the
+    //  number of messages per page and number of pages of messages they want to get. If our limit of only returning
+    //  up to 100 messages was due to response size constraints and database access constraints then pagination would
+    //  help alleviate those concerns and allow our users to get more messages.
+    @RequestMapping(method = RequestMethod.GET, value = "/messages")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Message> getMessages(@RequestParam String senderId, @RequestParam String recipientId) {
+        return messageService.getMessages(senderId, recipientId);
+    }
+
     // TODO: We should never expose information regarding the shape or specifics of the database
     //  instead of returning the full Message entity we should return a scrubbed version without the primary key ID
     @RequestMapping(method = RequestMethod.POST, value = "/messages")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message create(@Valid @RequestBody MessageRequest request) {
+    public Message createMessage(@Valid @RequestBody MessageRequest request) {
         return messageService.createMessage(request);
     }
 
@@ -42,5 +52,4 @@ public class MessageController {
         }
         return requestErrors;
     }
-
 }
