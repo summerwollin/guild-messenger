@@ -1,18 +1,6 @@
 package com.example.guildmessenger;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "messages")
-public class Message {
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+public class MessageResponse {
     public long getCreatedDate() {
         return createdDate;
     }
@@ -45,19 +33,8 @@ public class Message {
         this.messageText = messageText;
     }
 
-    @Id
-    @GeneratedValue
-    private long id;
-
-    @Column(name = "created_date", nullable = false, updatable = false)
-    private long createdDate;
-
-    @Column(name = "sender_id", nullable = false, length = 30)
-    private String senderId;
-
-    @Column(name = "recipient_id", nullable = false, length = 30)
-    private String recipientId;
-
-    @Column(name = "message_text", nullable = false, length = 120)
+    long createdDate;
+    String senderId;
+    String recipientId;
     String messageText;
 }

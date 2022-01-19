@@ -55,7 +55,6 @@ public class MessageControllerTests {
                 .andExpect(jsonPath("$.senderId").value("me"))
                 .andExpect(jsonPath("$.recipientId").value("you"))
                 .andExpect(jsonPath("$.messageText").value("my message text"))
-                .andExpect(jsonPath("$.id").exists())
                 .andExpect(jsonPath("$.createdDate").exists());
     }
 

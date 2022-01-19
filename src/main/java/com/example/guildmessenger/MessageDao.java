@@ -15,10 +15,11 @@ public class MessageDao {
     }
 
     public List<Message> findBySenderIdAndRecipientId(String senderId, String recipientId, Long timeLimit) {
-        return repository.findFirst100BySenderIdAndRecipientIdAndCreatedDateAfter(senderId, recipientId, timeLimit);
+        return repository.findMessagesForSenderAndRecipient(senderId, recipientId, timeLimit);
     }
 
     public Message saveMessage(Message message) {
         return repository.save(message);
     }
+
 }
