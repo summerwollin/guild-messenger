@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,13 +28,6 @@ public class MessageControllerTests {
     @AfterEach
     public void cleanUp() throws Exception {
         dao.deleteAll();
-    }
-
-    @Test
-    public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/")).andDo(MockMvcResultHandlers.print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello Guild!")));
     }
 
     @Test

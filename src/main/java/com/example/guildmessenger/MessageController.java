@@ -22,11 +22,6 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello Guild!";
-    }
-
     // TODO: Pagination would be a great way to improve this API. It would allow users more flexibility to set the
     //  number of messages per page and number of pages of messages they want to get. If our limit of only returning
     //  up to 100 messages was due to response size constraints and database access constraints then pagination would
